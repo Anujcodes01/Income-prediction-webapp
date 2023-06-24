@@ -6,8 +6,8 @@ from src.logger import logging
 from src.exception import CustomException
 from dataclasses import dataclass
 from sklearn.model_selection import train_test_split
-# from src.component.data_transfromation import DataTransformation
-# from src.component.modrl_trainer import ModelTrainer
+from src.components.data_transformation import DataTransformation
+# from src.components.modrl_trainer import ModelTrainer
 
 @dataclass
 class DataIngestionConfig:
@@ -54,10 +54,11 @@ if __name__ =="__main__":
     train_data_path , test_data_path = obj.inititate_data_ingestion()
 
     data_transformation = DataTransformation()
-    train_arr, test_arr, _ = data_transformation.inititate_data_transformation(train_data_path , test_data_path)
+    train_arr, test_arr, _ = data_transformation.inititate_data_transformation(train_data_path ,
+                                                                               test_data_path)
 
-    modeltrainer = ModelTrainer()
-    print(modeltrainer.inititate_model_trainer(train_arr, test_arr))
+    # modeltrainer = ModelTrainer()
+    # print(modeltrainer.inititate_model_trainer(train_arr, test_arr))
 
 
 
