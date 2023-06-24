@@ -24,6 +24,14 @@ def save_object(file_path, obj):
         raise CustomException(e, sys)
 
 
+def load_object(file_path):
+    try:
+        with open(file_path, "rb") as file_objt:
+            return pickle.load(file_objt)
+    except Exception as e:
+        raise CustomException(e, sys)
+
+
 def evaluate_model(X_train, y_train, X_test, y_test, models, params):
     try:
         report = {}
@@ -44,8 +52,6 @@ def evaluate_model(X_train, y_train, X_test, y_test, models, params):
             report[list(models.values())[i]] = test_model_acuracy
 
             return report
-
-
 
     except Exception as e:
         raise CustomException(e, sys)
